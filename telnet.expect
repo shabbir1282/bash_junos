@@ -10,7 +10,7 @@ set dirname [lindex $argv 4]
 log_user 1
 exp_internal 0 
 match_max 50000
-set timeout 8 
+set timeout 20 
 
 set prompt "(>) $"
 
@@ -23,6 +23,8 @@ send "$username\r"
 expect -re "assword:"
 send "$password\r"
 expect -re $prompt
+#set hostname [exec "show version | match Hostname | trim 10"]
+
 log_file $dirname/$ipaddres$fname.txt
 
 
