@@ -38,5 +38,5 @@ done
 
 if [ "$1" == '-c' ]; then
 tar -cvf $deploydir.tar $deploydir
-gzip $deploydir.tar
+gzip -f $deploydir.tar
 fi

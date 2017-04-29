@@ -25,6 +25,11 @@ send "$password\r"
 expect -re $prompt
 #set hostname [exec "show version | match Hostname | trim 10"]
 
+send "show version | match Hostname | trim 10\r"
+expect -re $prompt
+
+#set hostname [ $expect_out(buffer) ] 
+
 log_file $dirname/$ipaddres$fname.txt
 
 
@@ -36,7 +41,7 @@ while { ! [eof $handle] } {
         #puts $buf
         #expect -re $prompt
         #expect -re $prompt
-	send "$buf\r"
+	send "$buf | no-more\r"
 	expect -re $prompt
         #puts $outfile $expect_out(buffer)
 }
