@@ -1,1 +1,6 @@
-show version | no-more
+request pfe execute command "show jnh 0 pool usage" target fpc0 | no-more
+request pfe execute command "show jnh 0 pool usage" target fpc1 | no-more
+request pfe execute command "show jnh 0 pool usage" target fpc2 | no-more
+request pfe execute command "show jnh 0 pool usage" target fpc3 | no-more
+request pfe execute command "show jnh 0 pool usage" target fpc4 | no-more
+request pfe execute command "show jnh 0 pool usage" target fpc11 | no-more

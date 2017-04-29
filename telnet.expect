@@ -7,13 +7,12 @@ set fname [lindex $argv 3]
 set dirname [lindex $argv 4]
 
 #set outfile [open "$ipaddres\_$fname.txt" w]
-log_file $dirname/$ipaddres$fname.txt
 log_user 1
- 
+exp_internal 0 
 match_max 50000
-set timeout 2
+set timeout 8 
 
-set prompt "(%|#|\\$|>|~) $"
+set prompt "(>) $"
 
 log_user 1                   ;# turn off the usual output
 
@@ -24,6 +23,8 @@ send "$username\r"
 expect -re "assword:"
 send "$password\r"
 expect -re $prompt
+log_file $dirname/$ipaddres$fname.txt
+
 
 set handle [ open commands.txt r ]
 while { ! [eof $handle] } {
@@ -31,8 +32,10 @@ while { ! [eof $handle] } {
         #puts $buf
         #expect "\\~\\#"
         #puts $buf
-        expect -re $prompt
-        send "$buf\r"
+        #expect -re $prompt
+        #expect -re $prompt
+	send "$buf\r"
+	expect -re $prompt
         #puts $outfile $expect_out(buffer)
 }
 

@@ -35,3 +35,8 @@ do
         expect telnet.expect $hostip $username $password $filename $deploydir
         #expect telnet.expect $hostip $username $password $filename deploydir
 done
+
+if [ "$1" == '-c' ]; then
+tar -cvf $deploydir.tar $deploydir
+gzip $deploydir.tar
+fi
